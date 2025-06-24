@@ -60,8 +60,7 @@ async def pm_text(bot, message):
     user = message.from_user.first_name
     user_id = message.from_user.id
     if content.startswith("/") or content.startswith("#"): return  # ignore commands and hashtag
-        reply_msg = await bot.send_message(message.from_user.id, f"<b><i>Searching For {content} 🔍</i></b>", reply_to_message_id=message.id)
-        await auto_filter(bot, content, message , client, reply_msg )
+        await auto_filter(bot, content, message , client )
 
 @Client.on_callback_query(filters.regex(r"^next"))
 async def next_page(bot, query):
