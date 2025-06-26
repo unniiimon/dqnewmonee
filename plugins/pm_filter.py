@@ -1259,9 +1259,11 @@ async def auto_filter(client, msg, spoll=False):
         else:
             return
     else:
-        settings = await get_settings(msg.chat.id)
-        message = msg.reply_to_message # msg will be callback query
-        search, files, offset, total_results = spoll
+        else:
+    settings = await get_settings(msg.chat.id)
+    message = msg.reply_to_message  # msg will be callback query
+    search, files, offset = spoll
+    total_results = len(files)
     pre = 'filep' if settings['file_secure'] else 'file'
     if settings["button"]:
         btn = [
